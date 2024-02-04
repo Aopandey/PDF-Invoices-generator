@@ -37,6 +37,22 @@ for i in filepath:
         pdf.cell(w=25, h=8, txt=str(row["price_per_unit"]), border=1)
         pdf.cell(w=25, h=8, txt=str(row["total_price"]), border=1, ln=1)
 
+    sum_total = data["total_price"].sum()
+    pdf.set_font(family='Times', size=10)
+    pdf.set_text_color(85, 85, 85)
+    pdf.cell(w=25, h=8, txt="", border=1)
+    pdf.cell(w=60, h=8, txt="", border=1)
+    pdf.cell(w=35, h=8, txt="", border=1)
+    pdf.cell(w=25, h=8, txt="", border=1)
+    pdf.cell(w=25, h=8, txt=str(sum_total), border=1, ln=1)
+
+    pdf.set_font(family='Times', size=14, style="B")
+    pdf.cell(w=25, h=8, txt=f"The total price is: {sum_total}", ln=3)
+
+    pdf.set_font(family='Times', size=14, style="B")
+    pdf.cell(w=28, h=8, txt=f"PythonHow")
+    pdf.image("pythonhow.png", w=10)
+
     pdf.output(f"PDF/{filename}.pdf")
 
 
